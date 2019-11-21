@@ -28,7 +28,7 @@ pipeline {
 			      withDockerRegistry([credentialsId:'ecr:ap-south-1:newpipeline-ecr', url:"https://306870229847.dkr.ecr.ap-south-1.amazonaws.com"]){
                   sh """
 				  echo "Tagging the Docker Image: In Progress"
-				  docker tag pipeline:latest 306870229847.dkr.ecr.ap-south-1.amazonaws.com/newpipeline:1.0.1
+				  docker tag newpipeline:latest 306870229847.dkr.ecr.ap-south-1.amazonaws.com/newpipeline:1.0.1
 				  echo "Tagging the Docker Image: Completed"
 				  echo "Push Docker Image to ECR : In Progress"
 				  docker push 306870229847.dkr.ecr.ap-south-1.amazonaws.com/newpipeline:1.0.1
