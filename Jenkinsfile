@@ -25,13 +25,13 @@ pipeline {
         stage('Upload Docker Image to AWS ECR') {
             steps {
 			   script {
-			      withDockerRegistry([credentialsId:'ecr:ap-south-1:ecr-credentials', url:"https://306870229847.dkr.ecr.ap-south-1.amazonaws.com"]){
+			      withDockerRegistry([credentialsId:'ecr:ap-south-1:newpipeline-ecr', url:"https://306870229847.dkr.ecr.ap-south-1.amazonaws.com"]){
                   sh """
 				  echo "Tagging the Docker Image: In Progress"
-				  docker tag pipeline:latest 306870229847.dkr.ecr.ap-south-1.amazonaws.com/newpipeline:$TAG
+				  docker tag pipeline:latest 306870229847.dkr.ecr.ap-south-1.amazonaws.com/newpipeline:1.0.1
 				  echo "Tagging the Docker Image: Completed"
 				  echo "Push Docker Image to ECR : In Progress"
-				  docker push 306870229847.dkr.ecr.ap-south-1.amazonaws.com/newpipeline:latest
+				  docker push 306870229847.dkr.ecr.ap-south-1.amazonaws.com/newpipeline:1.0.1
 				  echo "Push Docker Image to ECR : Completed"
 				  """
 				  }
